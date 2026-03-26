@@ -1,0 +1,6 @@
+Client_ID,Full_Name,NRIC_Passport,Nationality,Email,Phone,Target_Criterion,Expected_Outcome,Notes
+C-1001,John Tan Wei Ming,S8901234A,Singaporean,john.tan@email.com,+65 9123 4567,Criterion 1 (Income),Eligible,Income > 300k (NOA YA2025)
+C-1002,Sarah Lim Hui Ling,S9212345C,Singaporean,sarah.lim@email.com,+65 9234 5678,Criterion 2 (Financial Assets),Eligible,Bank + CDP > 1M
+C-1003,David Chen Jian Hao,S7512345B,Singapore PR,david.chen@email.com,+65 9345 6789,Criterion 3 (Personal Assets),Eligible,Property Equity > 2M (Capped at 1M) + Bank > 1M
+C-1004,Amanda Lee,S9511111D,Singaporean,amanda.lee@email.com,+65 9456 7890,Criterion 1 (Income),Not Eligible,Income 250k (Below threshold)
+C-1005,Michael Wong,G1234567E,Foreigner,michael.w@email.com,+65 9567 8901,Criterion 2 (Financial Assets),Not Eligible,Bank balance 800k (Below threshold)
