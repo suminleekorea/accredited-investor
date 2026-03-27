@@ -485,12 +485,40 @@ def inject_styles() -> None:
             border: 1px solid #d9e2ef;
             border-radius: 12px;
         }
+        [data-testid="stExpander"] details,
+        [data-testid="stExpander"] summary {
+            background: #ffffff !important;
+            color: #172033 !important;
+        }
+        [data-testid="stExpander"] summary:hover,
+        [data-testid="stExpander"] summary:focus {
+            background: #f3f7fc !important;
+            color: #172033 !important;
+        }
+        [data-testid="stExpander"] summary *,
+        [data-testid="stExpander"] summary svg {
+            color: #172033 !important;
+            fill: #172033 !important;
+            stroke: #172033 !important;
+            -webkit-text-fill-color: #172033 !important;
+        }
         [data-testid="stFileUploader"],
         [data-testid="stTextInput"],
         [data-testid="stTextArea"],
         [data-testid="stNumberInput"],
         [data-testid="stSelectbox"] {
             background: transparent;
+        }
+        [data-baseweb="select"] > div {
+            background: #ffffff !important;
+            border: 1px solid #c8d6e8 !important;
+            color: #172033 !important;
+            box-shadow: none !important;
+        }
+        [data-baseweb="select"] > div:hover,
+        [data-baseweb="select"] > div:focus-within {
+            background: #ffffff !important;
+            border-color: #0f4c81 !important;
         }
         input, textarea, [data-baseweb="select"] *, [data-testid="stTextInput"] *, [data-testid="stTextArea"] *,
         [data-testid="stNumberInput"] *, [data-testid="stSelectbox"] *, [data-testid="stMarkdownContainer"] {
@@ -508,6 +536,18 @@ def inject_styles() -> None:
             background: #dcecff !important;
             color: #0f2747 !important;
             font-weight: 700 !important;
+        }
+        [data-baseweb="popover"] [role="listbox"],
+        div[data-baseweb="popover"] ul,
+        div[data-baseweb="popover"] li {
+            background: #ffffff !important;
+            color: #172033 !important;
+        }
+        [data-baseweb="select"] svg,
+        [data-testid="stSelectbox"] svg,
+        [data-testid="stNumberInput"] svg {
+            fill: #172033 !important;
+            stroke: #172033 !important;
         }
         table, thead, tbody, tr, th, td {
             color: #172033 !important;
@@ -534,10 +574,20 @@ def inject_styles() -> None:
             padding: 0.6rem 1rem;
             font-weight: 600;
         }
+        .stButton > button *,
+        .stButton > button p,
+        .stButton > button span {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
         .stButton > button:hover {
             background: #0c3d68;
             border-color: #0c3d68;
             color: #ffffff;
+        }
+        .stButton > button:hover * {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
         }
         .stInfo, .stSuccess, .stWarning, .stError {
             border-radius: 12px;

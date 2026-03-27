@@ -105,8 +105,8 @@ Human decisions still required:
 
 The app can:
 
-- read MT103 / remittance / payment proof PDFs
-- extract amount, policy number, payer, payee, and reference values when present
+- read MT103 / remittance / payment proof PDFs and receipt images
+- extract amount, policy number, payer, payee, account owner, transaction reference, and other payment values when present
 - compare extracted values against expected amount and policy number
 - flag mismatches or low-confidence results
 - guide Finance on the next action
@@ -151,12 +151,13 @@ Human decisions still required:
 
 ### USD Payment Review
 
-- Upload MT103 / payment proof in PDF format
+- Upload MT103 / payment proof in PDF or image format
 - Enter expected amount and policy number
 - Compare document evidence against expected values
 - Create a workflow case
 - Route the case through Finance and Cashier roles
 - Add messages and follow-up notes
+- Show upload guidance for clearer staff and customer submissions
 
 ### Current case UI
 
@@ -201,7 +202,9 @@ For production, these should move to enterprise-grade services.
 
 - The app first tries native PDF text extraction
 - If the text is weak or empty, it falls back to OCR
+- Receipt images are read through OCR directly
 - OCR can miss values on poor scans
+- Printed bank-generated proofs are usually more reliable than handwritten deposit slips
 - Human review is still required for important names, amounts, and approval decisions
 
 ## 9. Run locally
@@ -274,17 +277,27 @@ If you want to show this in a meeting:
 4. Show the workflow stepper and Copilot recommendation
 5. Open the seeded USD payment case
 6. Show the Finance-to-Cashier handoff model
+7. Upload one sample payment file and create a new case
+8. Explain that human approval still stays in place
 
-### Good case vs bad case message for payment OCR
+### Staff message for payment OCR
 
 - Good case:
   - bank-originated proof with a clear printed policy number
   - amount and reference also available from bank data or Excel
   - expected result: `Review passed`
 - Bad case:
-  - handwritten, blurry, tilted, or incomplete receipt
-  - OCR may find some text but the policy number is weak or missing
+  - handwritten, blurry, tilted, dark, cropped, or incomplete receipt
+  - OCR may find some text but the policy number is weak, missing, or misread
   - expected result: `Needs manual review`
+
+### Recommended upload remarks
+
+- Please upload a clear, straight, and full image of the receipt.
+- Make sure the policy number, amount, and transaction details are visible.
+- Avoid blur, shadows, cropped edges, handwriting over key fields, and folded paper.
+- If available, upload the bank-generated receipt or statement instead of a handwritten deposit slip.
+- If available, include the supporting bank Excel or bank reference file.
 
 ### Quick local check for payment cases
 
@@ -295,8 +308,6 @@ python scripts/payment_demo_check.py
 ```
 
 This prints the current extraction result for the good case and the bad-case sample PDFs.
-7. Upload one sample PDF and create a new case
-8. Explain that human approval still stays in place
 
 ## 11A. Which files are needed to run or share the demo
 
