@@ -34,5 +34,23 @@
     "recipient": "cashier.ops@example.com",
     "subject": "USD-DEMO-001 - Premium received for policy POLICY12345",
     "message": "Finance has sighted incoming USD funds for policy POLICY12345. Please post the premium in the policy admin system to enforce the policy."
+  },
+  {
+    "case_id": "AI-5C73FF4E",
+    "timestamp": "2026-03-27T03:29:08+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "abby.tan@example.com",
+    "subject": "AI-5C73FF4E created for applicant JOHN TAN",
+    "message": "Accredited investor workflow created. Queue: NB admin review. Alert: medium. Status: New. New Business admin should review the submitted documents first."
+  },
+  {
+    "case_id": "AI-5C73FF4E",
+    "timestamp": "2026-03-27T03:29:33+00:00",
+    "sender": "Abby Tan",
+    "sender_email": "abby.tan@example.com",
+    "recipient": "john.tan@example.com",
+    "subject": "AI-5C73FF4E - Request for additional accredited investor documents",
+    "message": "Dear JOHN TAN,\n\nWe reviewed your accredited investor submission and need additional supporting documents to complete the assessment.\n\nPlease send updated proof of income, net personal assets, financial assets, or joint-account evidence.\n\nRegards,\nNew Business Administration"
   }
 ]

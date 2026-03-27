@@ -53,5 +53,48 @@
     },
     "created_at": "2026-03-27T03:15:00+00:00",
     "updated_at": "2026-03-27T03:30:00+00:00"
+  },
+  {
+    "id": "AI-5C73FF4E",
+    "case_type": "accredited_investor",
+    "client_name": "John Tan",
+    "client_email": "john.tan@example.com",
+    "applicant_name": "JOHN TAN",
+    "status": "Pending docs",
+    "alert_level": "medium",
+    "queue": "Awaiting customer documents",
+    "assignee_role": "nb_admin",
+    "assignee_name": "Abby Tan",
+    "assignee_email": "abby.tan@example.com",
+    "summary": "At least one DBS accredited investor criterion was identified in the uploaded evidence.",
+    "manual_review_reasons": [],
+    "matched_evidence": [
+      "investor_income_pass.pdf: annual income 350,000"
+    ],
+    "fields": {
+      "annual_income": 350000,
+      "net_personal_assets": null,
+      "adjusted_net_personal_assets": null,
+      "net_financial_assets": null,
+      "primary_residence_value": null,
+      "primary_residence_cap": 1000000,
+      "joint_account_with_accredited_investor": false,
+      "annual_income_display": "USD 350,000",
+      "net_personal_assets_display": "Not found",
+      "adjusted_net_personal_assets_display": "Not found",
+      "net_financial_assets_display": "Not found",
+      "primary_residence_value_display": "Not found",
+      "qualifying_criteria": [
+        "Income >= SGD 300,000 in the last 12 months."
+      ],
+      "thresholds": {
+        "annual_income": 300000,
+        "net_personal_assets": 2000000,
+        "net_financial_assets": 1000000,
+        "primary_residence_cap": 1000000
+      }
+    },
+    "created_at": "2026-03-27T03:29:08+00:00",
+    "updated_at": "2026-03-27T03:29:33+00:00"
   }
 ]
