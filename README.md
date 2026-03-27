@@ -10,6 +10,25 @@ It helps teams read documents, extract key fields, recommend the next action, dr
 
 It is a **demo / prototype**, not a production system yet.
 
+## Project structure
+
+The project is now flattened at the repository root for easier local running and Streamlit deployment.
+
+Key files and folders:
+
+- `app.py`
+  - Main Streamlit application
+- `requirements.txt`
+  - Python dependencies for local run and Streamlit deployment
+- `README.md`
+  - Demo guide, workflow explanation, deployment notes, and IT discussion guide
+- `utils/`
+  - OCR, validation, and workflow helper modules
+- `data/`
+  - Seeded demo users, clients, cases, and message threads
+- `sample_docs/`
+  - Fake PDF files for the two demo workflows
+
 ## 1. What this demo is for
 
 This app demonstrates how AI can support manual insurance operations without removing human control.
@@ -194,12 +213,6 @@ pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-If you are already inside the `ai-validator` folder:
-
-```bash
-python -m streamlit run app.py
-```
-
 The app will usually open on:
 
 - `http://localhost:8501`
@@ -263,6 +276,19 @@ If you want to show this in a meeting:
 6. Show the Finance-to-Cashier handoff model
 7. Upload one sample PDF and create a new case
 8. Explain that human approval still stays in place
+
+## 11A. Which files are needed to run or share the demo
+
+If you want to hand this project to another person or deploy it, the important files are:
+
+- `app.py`
+- `requirements.txt`
+- `utils/`
+- `data/`
+- `sample_docs/`
+- `README.md`
+
+If someone only wants to run the Streamlit demo, these are the minimum files they need.
 
 ## 12. How Copilot can automate the business process
 
@@ -431,6 +457,16 @@ These are direct questions you can use in a meeting:
 - What monitoring and logging are required?
 - Who will own application support after go-live?
 
+## 17A. Streamlit Cloud deployment settings
+
+If you deploy this repo to Streamlit Community Cloud, use:
+
+- Repository: your GitHub repository
+- Branch: `main`
+- Main file path: `app.py`
+
+Because the project is now flattened at the repo root, you do not need to point Streamlit to `ai-validator/app.py` anymore.
+
 ## 18. Current limitations
 
 - PDF-first workflow only
@@ -439,6 +475,17 @@ These are direct questions you can use in a meeting:
 - no real system integration yet
 - no production auth yet
 - no production audit controls yet
+
+## 18A. Dependency versions
+
+The dependency ranges in `requirements.txt` were updated to current package releases as of March 27, 2026.
+
+Current target ranges:
+
+- `streamlit>=1.55,<1.56`
+- `pdfplumber>=0.11.9,<0.12`
+- `PyMuPDF>=1.27.2,<1.28`
+- `rapidocr-onnxruntime>=1.4.4,<1.5`
 
 ## 19. Included sample data
 
