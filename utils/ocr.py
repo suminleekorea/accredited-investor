@@ -45,6 +45,20 @@ def assess_text_quality(text: str) -> str:
 
 def infer_document_type(text: str) -> str:
     lowered = text.lower()
+    if any(
+        keyword in lowered
+        for keyword in (
+            "insurance payment",
+            "premium only",
+            "policy no",
+            "policy number",
+            "deposit account",
+            "credit advice",
+            "bank deposit",
+            "ocbc",
+        )
+    ):
+        return "payment proof"
     if any(keyword in lowered for keyword in ("mt103", "telegraphic transfer", "remittance", "swift", "beneficiary")):
         return "payment proof"
     if any(keyword in lowered for keyword in ("income tax", "notice of assessment", "salary", "payslip")):
@@ -62,11 +76,17 @@ def _extract_native_text(file_bytes: bytes) -> str:
     return normalize_text("\n".join(text))
 
 
-def _extract_ocr_text(file_bytes: bytes) -> str:
-    if fitz is None or RapidOCR is None:
+def _ocr_reader():
+    if RapidOCR is None:
+        return None
+    return RapidOCR()
+
+
+def _extract_pdf_ocr_text(file_bytes: bytes) -> str:
+    reader = _ocr_reader()
+    if fitz is None or reader is None:
         return ""
 
-    reader = RapidOCR()
     doc = fitz.open(stream=file_bytes, filetype="pdf")
     pages = []
     try:
@@ -82,21 +102,43 @@ def _extract_ocr_text(file_bytes: bytes) -> str:
     return normalize_text("\n".join(pages))
 
 
+def _extract_image_ocr_text(file_bytes: bytes) -> str:
+    reader = _ocr_reader()
+    if reader is None:
+        return ""
+
+    result, _ = reader(file_bytes)
+    if not result:
+        return ""
+    return normalize_text(" ".join(item[1] for item in result))
+
+
+def _is_pdf(uploaded_file: Any) -> bool:
+    filename = getattr(uploaded_file, "name", "").lower()
+    content_type = getattr(uploaded_file, "type", "") or ""
+    return filename.endswith(".pdf") or "pdf" in content_type.lower()
+
+
 def analyze_document(uploaded_file: Any) -> dict:
     file_bytes = uploaded_file.getvalue()
-    native_text = _extract_native_text(file_bytes)
+    is_pdf = _is_pdf(uploaded_file)
+    native_text = _extract_native_text(file_bytes) if is_pdf else ""
     native_quality = assess_text_quality(native_text)
     warnings = []
 
     text = native_text
-    extraction_method = "native PDF text"
+    extraction_method = "native PDF text" if is_pdf else "image OCR"
 
     if native_quality != "good":
-        ocr_text = _extract_ocr_text(file_bytes)
+        ocr_text = _extract_pdf_ocr_text(file_bytes) if is_pdf else _extract_image_ocr_text(file_bytes)
         if ocr_text:
             text = ocr_text if len(ocr_text) >= len(native_text) else native_text
-            extraction_method = "OCR fallback"
-            warnings.append("OCR fallback used because native text extraction was limited.")
+            extraction_method = "OCR fallback" if is_pdf else "image OCR"
+            warnings.append(
+                "OCR fallback used because native text extraction was limited."
+                if is_pdf
+                else "Image OCR used for this uploaded receipt."
+            )
         elif native_quality == "empty":
             warnings.append("No extractable text found. OCR fallback was unavailable or did not return text.")
 

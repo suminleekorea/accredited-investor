@@ -52,5 +52,50 @@
     "recipient": "john.tan@example.com",
     "subject": "AI-5C73FF4E - Request for additional accredited investor documents",
     "message": "Dear JOHN TAN,\n\nWe reviewed your accredited investor submission and need additional supporting documents to complete the assessment.\n\nPlease send updated proof of income, net personal assets, financial assets, or joint-account evidence.\n\nRegards,\nNew Business Administration"
+  },
+  {
+    "case_id": "AI-17922A40",
+    "timestamp": "2026-03-27T04:18:41+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "abby.tan@example.com",
+    "subject": "AI-17922A40 created for applicant SARAH LIM",
+    "message": "Accredited investor workflow created. Queue: NB admin review. Alert: medium. Status: New. New Business admin should review the submitted documents first."
+  },
+  {
+    "case_id": "AI-3A208989",
+    "timestamp": "2026-03-27T04:18:43+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "abby.tan@example.com",
+    "subject": "AI-3A208989 created for applicant SARAH LIM",
+    "message": "Accredited investor workflow created. Queue: NB admin review. Alert: medium. Status: New. New Business admin should review the submitted documents first."
+  },
+  {
+    "case_id": "AI-BF883A6C",
+    "timestamp": "2026-03-27T04:18:46+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "abby.tan@example.com",
+    "subject": "AI-BF883A6C created for applicant SARAH LIM",
+    "message": "Accredited investor workflow created. Queue: NB admin review. Alert: medium. Status: New. New Business admin should review the submitted documents first."
+  },
+  {
+    "case_id": "AI-17922A40",
+    "timestamp": "2026-03-27T04:19:15+00:00",
+    "sender": "Abby Tan",
+    "sender_email": "abby.tan@example.com",
+    "recipient": "john.tan@example.com",
+    "subject": "AI-17922A40 - Request for additional accredited investor documents",
+    "message": "Dear SARAH LIM,\n\nWe reviewed your accredited investor submission and need additional supporting documents to complete the assessment.\n\nPlease send updated proof of income, net personal assets, financial assets, or joint-account evidence.\n\nRegards,\nNew Business Administration"
+  },
+  {
+    "case_id": "USD-23486416",
+    "timestamp": "2026-03-27T04:20:37+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "finance.ops@example.com",
+    "subject": "USD-23486416 created for policy policy12345",
+    "message": "USD payment workflow created. Queue: Finance review. Alert: medium. Status: MT103 received. Finance should sight incoming funds before cashier posting."
   }
 ]

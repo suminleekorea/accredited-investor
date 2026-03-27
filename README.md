@@ -254,13 +254,13 @@ Use these files in the `Investor Review` tab:
 Use these files in the `USD Payment Review` tab:
 
 - `sample_docs/payment_pass_policy_match.pdf`
-  - Use this to show a clean amount-and-policy match
+  - Good case: clean bank-originated payment proof with a printed policy number and amount that matches
 - `sample_docs/payment_wrong_reference.pdf`
-  - Use this to show a policy/reference mismatch
+  - Bad case: payment amount is visible but the policy/reference does not match
 - `sample_docs/payment_missing_policy_manual_review.pdf`
-  - Use this to show a missing-policy / manual-review scenario
+  - Bad case: payment amount is visible but the policy/reference is missing, so manual review is needed
 - `sample_docs/payment_wrong_amount.pdf`
-  - Use this to show an amount mismatch
+  - Bad case: policy/reference is present but the amount does not match
 
 ## 11. Quick demo script
 
@@ -274,6 +274,27 @@ If you want to show this in a meeting:
 4. Show the workflow stepper and Copilot recommendation
 5. Open the seeded USD payment case
 6. Show the Finance-to-Cashier handoff model
+
+### Good case vs bad case message for payment OCR
+
+- Good case:
+  - bank-originated proof with a clear printed policy number
+  - amount and reference also available from bank data or Excel
+  - expected result: `Review passed`
+- Bad case:
+  - handwritten, blurry, tilted, or incomplete receipt
+  - OCR may find some text but the policy number is weak or missing
+  - expected result: `Needs manual review`
+
+### Quick local check for payment cases
+
+Run this from the project root:
+
+```bash
+python scripts/payment_demo_check.py
+```
+
+This prints the current extraction result for the good case and the bad-case sample PDFs.
 7. Upload one sample PDF and create a new case
 8. Explain that human approval still stays in place
 

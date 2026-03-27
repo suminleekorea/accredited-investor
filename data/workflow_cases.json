@@ -96,5 +96,172 @@
     },
     "created_at": "2026-03-27T03:29:08+00:00",
     "updated_at": "2026-03-27T03:29:33+00:00"
+  },
+  {
+    "id": "AI-17922A40",
+    "case_type": "accredited_investor",
+    "client_name": "John Tan",
+    "client_email": "john.tan@example.com",
+    "applicant_name": "SARAH LIM",
+    "status": "Pending docs",
+    "alert_level": "medium",
+    "queue": "Pending policy admin tagging",
+    "assignee_role": "policy_admin",
+    "assignee_name": "Policy Admin",
+    "assignee_email": "policy.admin@example.com",
+    "summary": "At least one DBS accredited investor criterion was identified in the uploaded evidence.",
+    "manual_review_reasons": [],
+    "matched_evidence": [
+      "investor_financial_assets_pass.pdf: net financial assets 1,250,000",
+      "investor_income_pass.pdf: annual income 350,000"
+    ],
+    "fields": {
+      "annual_income": 350000,
+      "net_personal_assets": null,
+      "adjusted_net_personal_assets": null,
+      "net_financial_assets": 1250000,
+      "primary_residence_value": null,
+      "primary_residence_cap": 1000000,
+      "joint_account_with_accredited_investor": false,
+      "annual_income_display": "USD 350,000",
+      "net_personal_assets_display": "Not found",
+      "adjusted_net_personal_assets_display": "Not found",
+      "net_financial_assets_display": "USD 1,250,000",
+      "primary_residence_value_display": "Not found",
+      "qualifying_criteria": [
+        "Income >= SGD 300,000 in the last 12 months.",
+        "Net financial assets exceed SGD 1,000,000."
+      ],
+      "thresholds": {
+        "annual_income": 300000,
+        "net_personal_assets": 2000000,
+        "net_financial_assets": 1000000,
+        "primary_residence_cap": 1000000
+      }
+    },
+    "created_at": "2026-03-27T04:18:41+00:00",
+    "updated_at": "2026-03-27T04:19:32+00:00"
+  },
+  {
+    "id": "AI-3A208989",
+    "case_type": "accredited_investor",
+    "client_name": "John Tan",
+    "client_email": "john.tan@example.com",
+    "applicant_name": "SARAH LIM",
+    "status": "New",
+    "alert_level": "medium",
+    "queue": "NB admin review",
+    "assignee_role": "nb_admin",
+    "assignee_name": "Abby Tan",
+    "assignee_email": "abby.tan@example.com",
+    "summary": "At least one DBS accredited investor criterion was identified in the uploaded evidence.",
+    "manual_review_reasons": [],
+    "matched_evidence": [
+      "investor_financial_assets_pass.pdf: net financial assets 1,250,000",
+      "investor_income_pass.pdf: annual income 350,000"
+    ],
+    "fields": {
+      "annual_income": 350000,
+      "net_personal_assets": null,
+      "adjusted_net_personal_assets": null,
+      "net_financial_assets": 1250000,
+      "primary_residence_value": null,
+      "primary_residence_cap": 1000000,
+      "joint_account_with_accredited_investor": false,
+      "annual_income_display": "USD 350,000",
+      "net_personal_assets_display": "Not found",
+      "adjusted_net_personal_assets_display": "Not found",
+      "net_financial_assets_display": "USD 1,250,000",
+      "primary_residence_value_display": "Not found",
+      "qualifying_criteria": [
+        "Income >= SGD 300,000 in the last 12 months.",
+        "Net financial assets exceed SGD 1,000,000."
+      ],
+      "thresholds": {
+        "annual_income": 300000,
+        "net_personal_assets": 2000000,
+        "net_financial_assets": 1000000,
+        "primary_residence_cap": 1000000
+      }
+    },
+    "created_at": "2026-03-27T04:18:43+00:00",
+    "updated_at": "2026-03-27T04:18:43+00:00"
+  },
+  {
+    "id": "AI-BF883A6C",
+    "case_type": "accredited_investor",
+    "client_name": "John Tan",
+    "client_email": "john.tan@example.com",
+    "applicant_name": "SARAH LIM",
+    "status": "New",
+    "alert_level": "medium",
+    "queue": "NB admin review",
+    "assignee_role": "nb_admin",
+    "assignee_name": "Abby Tan",
+    "assignee_email": "abby.tan@example.com",
+    "summary": "At least one DBS accredited investor criterion was identified in the uploaded evidence.",
+    "manual_review_reasons": [],
+    "matched_evidence": [
+      "investor_financial_assets_pass.pdf: net financial assets 1,250,000",
+      "investor_income_pass.pdf: annual income 350,000"
+    ],
+    "fields": {
+      "annual_income": 350000,
+      "net_personal_assets": null,
+      "adjusted_net_personal_assets": null,
+      "net_financial_assets": 1250000,
+      "primary_residence_value": null,
+      "primary_residence_cap": 1000000,
+      "joint_account_with_accredited_investor": false,
+      "annual_income_display": "USD 350,000",
+      "net_personal_assets_display": "Not found",
+      "adjusted_net_personal_assets_display": "Not found",
+      "net_financial_assets_display": "USD 1,250,000",
+      "primary_residence_value_display": "Not found",
+      "qualifying_criteria": [
+        "Income >= SGD 300,000 in the last 12 months.",
+        "Net financial assets exceed SGD 1,000,000."
+      ],
+      "thresholds": {
+        "annual_income": 300000,
+        "net_personal_assets": 2000000,
+        "net_financial_assets": 1000000,
+        "primary_residence_cap": 1000000
+      }
+    },
+    "created_at": "2026-03-27T04:18:46+00:00",
+    "updated_at": "2026-03-27T04:18:46+00:00"
+  },
+  {
+    "id": "USD-23486416",
+    "case_type": "usd_payment",
+    "client_name": "John Tan",
+    "client_email": "john.tan@example.com",
+    "policy_number": "policy12345",
+    "expected_amount": 10000.0,
+    "status": "MT103 received",
+    "alert_level": "medium",
+    "queue": "Finance review",
+    "assignee_role": "finance",
+    "assignee_name": "Finance Ops",
+    "assignee_email": "finance.ops@example.com",
+    "summary": "Payment amount and policy/reference matched the expected input.",
+    "manual_review_reasons": [],
+    "matched_evidence": [
+      "payment_pass_policy_match.pdf: amount 10,000.00",
+      "payment_pass_policy_match.pdf: reference POLICY12345"
+    ],
+    "fields": {
+      "currency": "USD",
+      "amount": 10000.0,
+      "amount_display": "USD 10,000.00",
+      "reference": "POLICY12345",
+      "reference_required": true,
+      "reference_match": "Matched",
+      "payer": "ALICE TAN",
+      "payee": "GREAT EASTERN LIFE"
+    },
+    "created_at": "2026-03-27T04:20:37+00:00",
+    "updated_at": "2026-03-27T04:20:37+00:00"
   }
 ]

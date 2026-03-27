@@ -1159,8 +1159,8 @@ def render_guides() -> None:
 
     st.markdown("### Quick start")
     st.write("- Use **Investor Review** to check accredited investor documents.")
-    st.write("- Use **USD Payment Review** to check TT, MT103, remittance, or payment proof PDFs.")
-    st.write("- Upload one or more PDFs, then review the extracted fields and evidence snippets.")
+    st.write("- Use **USD Payment Review** to check TT, MT103, remittance, payment proof PDFs, or receipt images.")
+    st.write("- Upload one or more files, then review the extracted fields and evidence snippets.")
     st.write("- For USD payments, enter the expected amount and policy/reference before checking the match.")
     st.write("- Move a case step by step using the action buttons and the case controls below.")
     st.write("- Escalate when the app shows missing evidence, low confidence, or conflicting values.")
@@ -1454,9 +1454,26 @@ def main() -> None:
     with payment_tab:
         st.subheader("USD Payment Review")
         st.caption(
-            "Upload TT, MT103, remittance, or payment proof PDFs for payment review. "
+            "Upload TT, MT103, remittance, payment proof PDFs, or receipt images for payment review. "
             "You can also create and move payment cases here."
         )
+        st.info(
+            "Good case: bank-originated payment proof with a clear printed policy number, amount, and transaction details. "
+            "Bad case: handwritten or blurry receipt where OCR may miss or misread the policy number, so staff should manually review it."
+        )
+        with st.expander("Upload remarks for staff and customers", expanded=True):
+            st.write("- Please upload a clear, straight, and full image of the receipt.")
+            st.write("- Make sure the policy number, amount, and transaction details are visible.")
+            st.write("- Avoid blur, shadows, cropped edges, handwriting over key fields, and folded paper.")
+            st.write("- If available, upload the bank-generated receipt or statement instead of a handwritten deposit slip.")
+        with st.expander("Before you submit", expanded=False):
+            st.write("- Prefer bank-originated proof over handwritten forms.")
+            st.write("- Upload the receipt together with the supporting bank Excel or reference file if available.")
+            st.write("- OCR is assistive only. Final approval still needs staff review.")
+            st.write("- Keep the original uploaded image for audit and follow-up.")
+        with st.expander("Examples", expanded=False):
+            st.write("- Good upload: clear bank receipt with printed policy number and amount.")
+            st.write("- Bad upload: dark, tilted, blurry, cropped, or handwritten receipt.")
 
         st.markdown("### Start a new review")
         clients = list_clients()
@@ -1467,14 +1484,19 @@ def main() -> None:
         with expected_amount:
             amount = st.number_input("Expected amount (USD)", min_value=0.0, value=10000.0, step=100.0)
         with expected_reference:
-            reference = st.text_input("Policy/reference number", placeholder="POLICY12345")
+            reference = st.text_input(
+                "Policy/reference number",
+                placeholder="POLICY12345",
+                help="Required. Enter the expected policy or bank reference even if OCR will also try to find it.",
+            )
 
         payment_files = st.file_uploader(
-            "Upload payment documents (PDF)",
-            type=["pdf"],
+            "Upload payment documents (PDF, PNG, JPG, JPEG)",
+            type=["pdf", "png", "jpg", "jpeg"],
             accept_multiple_files=True,
             key="payment_files",
         )
+        st.caption("Tip: clear, upright, uncropped bank receipts usually give the best OCR result.")
 
         if payment_files:
             documents = analyze_documents(payment_files)
@@ -1520,9 +1542,12 @@ def main() -> None:
                 st.table(
                     [
                         {"Field": "Expected amount", "Value": f"USD {amount:,.2f}"},
+                        {"Field": "Detected currency", "Value": result["fields"]["currency"]},
                         {"Field": "Extracted amount", "Value": result["fields"]["amount_display"]},
                         {"Field": "Reference match", "Value": result["fields"]["reference_match"]},
                         {"Field": "Extracted reference", "Value": result["fields"]["reference"]},
+                        {"Field": "Account owner", "Value": result["fields"]["account_owner"]},
+                        {"Field": "Transaction/ref", "Value": result["fields"]["transaction"]},
                     ]
                 )
 
