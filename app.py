@@ -84,7 +84,7 @@ def render_copilot_panel(summary: str, recommendation: str, reasons: list[str], 
             for reason in reasons:
                 st.write(f"- {reason}")
         else:
-            st.write("- No additional reasoning provided.")
+            st.write("- Copilot did not detect any blocking issues.")
     with action_col:
         st.markdown("**One-click handoff**")
         st.info(handoff_label)
@@ -497,6 +497,31 @@ def inject_styles() -> None:
             color: #172033 !important;
             -webkit-text-fill-color: #172033 !important;
         }
+        [data-baseweb="select"] > div,
+        [data-baseweb="select"] span,
+        [role="listbox"] [role="option"],
+        [role="listbox"] [role="option"] * {
+            color: #172033 !important;
+            -webkit-text-fill-color: #172033 !important;
+        }
+        [role="listbox"] [role="option"][aria-selected="true"] {
+            background: #dcecff !important;
+            color: #0f2747 !important;
+            font-weight: 700 !important;
+        }
+        table, thead, tbody, tr, th, td {
+            color: #172033 !important;
+            -webkit-text-fill-color: #172033 !important;
+        }
+        [data-testid="stTable"] th,
+        [data-testid="stTable"] td,
+        [data-testid="stTable"] div,
+        [data-testid="stDataFrame"] th,
+        [data-testid="stDataFrame"] td,
+        [data-testid="stDataFrame"] div {
+            color: #172033 !important;
+            -webkit-text-fill-color: #172033 !important;
+        }
         input::placeholder, textarea::placeholder {
             color: #5a6f8d !important;
             -webkit-text-fill-color: #5a6f8d !important;
@@ -866,7 +891,7 @@ def render_investor_review_layout(result: dict, selected_client: dict) -> None:
         st.table(doc_rows)
 
     with decision_col:
-        st.markdown("### Decision")
+        st.markdown("### Review result")
         render_status(result["status"], result["summary"])
         st.markdown("**Extracted financial summary**")
         render_field_summary(result)
@@ -1105,6 +1130,24 @@ def render_glossary(case_type: str) -> None:
         st.write("- **Rejected**: The payment proof was not sufficient or did not match.")
 
 
+def render_investor_workflow_guide() -> None:
+    st.markdown("### Workflow")
+    st.write("1. Customer uploads documents")
+    st.write("2. New Business Administration checks completeness")
+    st.write("3. HNW Team reviews the evidence")
+    st.write("4. HNW Team Lead approves or rejects")
+    st.write("5. Policy Admin completes the final system update")
+
+
+def render_usd_workflow_guide() -> None:
+    st.markdown("### Workflow")
+    st.write("1. Customer submits proof of payment")
+    st.write("2. Finance checks amount and policy number")
+    st.write("3. Finance confirms funds in the insurer USD account")
+    st.write("4. Finance informs Cashier that premium is received")
+    st.write("5. Cashier posts the premium in the policy admin system")
+
+
 def render_guides() -> None:
     seed_workflow_data()
     inject_styles()
@@ -1169,6 +1212,7 @@ def main() -> None:
                 copilot_reasons,
                 handoff_label,
             )
+            render_investor_workflow_guide()
 
             metric1, metric2, metric3 = st.columns(3)
             metric1.metric("Best annual income", result["fields"]["annual_income_display"])
@@ -1234,6 +1278,7 @@ def main() -> None:
                 selected_case["status"],
                 selected_case["queue"],
             )
+            render_investor_case_overview(selected_case)
             render_next_step_box(*guidance)
             render_copilot_panel(*get_investor_copilot_content(selected_case))
 
@@ -1295,8 +1340,6 @@ def main() -> None:
                     if st.button("Cancel", key=f"cancel_investor_{selected_case['id']}"):
                         clear_pending_action(selected_case["id"])
                         st.rerun()
-
-            render_investor_case_overview(selected_case)
 
             with st.expander("Advanced case settings", expanded=False):
                 queue_col, owner_col, status_col = st.columns(3)
@@ -1454,6 +1497,7 @@ def main() -> None:
                 copilot_reasons,
                 handoff_label,
             )
+            render_usd_workflow_guide()
 
             metric1, metric2, metric3 = st.columns(3)
             metric1.metric("Best extracted amount", result["fields"]["amount_display"])
@@ -1537,6 +1581,7 @@ def main() -> None:
                 selected_case["status"],
                 selected_case["queue"],
             )
+            render_usd_case_overview(selected_case)
             render_next_step_box(*guidance)
             render_copilot_panel(*get_usd_copilot_content(selected_case))
 
@@ -1584,8 +1629,6 @@ def main() -> None:
                     if st.button("Cancel", key=f"cancel_usd_{selected_case['id']}"):
                         clear_pending_action(selected_case["id"])
                         st.rerun()
-
-            render_usd_case_overview(selected_case)
 
             with st.expander("Advanced case settings", expanded=False):
                 queue_col, owner_col, status_col = st.columns(3)
