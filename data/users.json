@@ -1,1 +1,53 @@
-{}
+{
+  "users": [
+    {
+      "id": "u-nb-1",
+      "name": "Abby Tan",
+      "email": "abby.tan@example.com",
+      "role": "nb_admin",
+      "active": true
+    },
+    {
+      "id": "u-nb-2",
+      "name": "Joie Lim",
+      "email": "joie.lim@example.com",
+      "role": "nb_admin",
+      "active": true
+    },
+    {
+      "id": "u-hnw-1",
+      "name": "Shaun HNW",
+      "email": "shaun.hnw@example.com",
+      "role": "hnw_reviewer",
+      "active": true
+    },
+    {
+      "id": "u-lead-1",
+      "name": "Claudia Lead",
+      "email": "claudia.lead@example.com",
+      "role": "team_lead",
+      "active": true
+    },
+    {
+      "id": "u-policy-1",
+      "name": "Policy Admin",
+      "email": "policy.admin@example.com",
+      "role": "policy_admin",
+      "active": true
+    },
+    {
+      "id": "u-fin-1",
+      "name": "Finance Ops",
+      "email": "finance.ops@example.com",
+      "role": "finance",
+      "active": true
+    },
+    {
+      "id": "u-cash-1",
+      "name": "Cashier Ops",
+      "email": "cashier.ops@example.com",
+      "role": "cashier",
+      "active": true
+    }
+  ]
+}

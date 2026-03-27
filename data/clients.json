@@ -1,1 +1,24 @@
-{}
+{
+  "clients": [
+    {
+      "id": "c-001",
+      "name": "John Tan",
+      "email": "john.tan@example.com"
+    },
+    {
+      "id": "c-002",
+      "name": "Sarah Lim",
+      "email": "sarah.lim@example.com"
+    },
+    {
+      "id": "c-003",
+      "name": "Alice Tan",
+      "email": "alice.tan@example.com"
+    },
+    {
+      "id": "c-004",
+      "name": "Michael Ong",
+      "email": "michael.ong@example.com"
+    }
+  ]
+}

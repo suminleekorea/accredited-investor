@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "case_id": "AI-DEMO-001",
+    "timestamp": "2026-03-27T03:00:00+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "abby.tan@example.com",
+    "subject": "AI-DEMO-001 created for applicant John Tan",
+    "message": "Accredited investor workflow created. Queue: NB admin review. Alert: medium. Status: New. New Business admin should review the submitted documents first."
+  },
+  {
+    "case_id": "AI-DEMO-001",
+    "timestamp": "2026-03-27T03:05:00+00:00",
+    "sender": "Abby Tan",
+    "sender_email": "abby.tan@example.com",
+    "recipient": "shaun.hnw@example.com",
+    "subject": "AI-DEMO-001 - Documents forwarded to HNW",
+    "message": "Please validate the attached income proof against the accredited investor criteria and advise if it is ready for lead approval."
+  },
+  {
+    "case_id": "USD-DEMO-001",
+    "timestamp": "2026-03-27T03:15:00+00:00",
+    "sender": "system",
+    "sender_email": "system@local",
+    "recipient": "finance.ops@example.com",
+    "subject": "USD-DEMO-001 created for policy POLICY12345",
+    "message": "USD payment workflow created. Queue: Finance review. Alert: medium. Status: MT103 received. Finance should sight incoming funds before cashier posting."
+  },
+  {
+    "case_id": "USD-DEMO-001",
+    "timestamp": "2026-03-27T03:30:00+00:00",
+    "sender": "Finance Ops",
+    "sender_email": "finance.ops@example.com",
+    "recipient": "cashier.ops@example.com",
+    "subject": "USD-DEMO-001 - Premium received for policy POLICY12345",
+    "message": "Finance has sighted incoming USD funds for policy POLICY12345. Please post the premium in the policy admin system to enforce the policy."
+  }
+]
